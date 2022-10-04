@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="examen_Jose_Antonio_Estrada_ReyesModelStoreContainer" CdmEntityContainer="examen_Jose_Antonio_Estrada_ReyesEntities">
+    <EntitySetMapping Name="t_clientes">
+      <EntityTypeMapping TypeName="examen_Jose_Antonio_Estrada_ReyesModel.t_clientes">
+        <MappingFragment StoreEntitySet="t_clientes">
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_detalleFactura">
+      <EntityTypeMapping TypeName="examen_Jose_Antonio_Estrada_ReyesModel.t_detalleFactura">
+        <MappingFragment StoreEntitySet="t_detalleFactura">
+          <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+          <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_facturas">
+      <EntityTypeMapping TypeName="examen_Jose_Antonio_Estrada_ReyesModel.t_facturas">
+        <MappingFragment StoreEntitySet="t_facturas">
+          <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+          <ScalarProperty Name="NumeroFactura" ColumnName="NumeroFactura" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t_productos">
+      <EntityTypeMapping TypeName="examen_Jose_Antonio_Estrada_ReyesModel.t_productos">
+        <MappingFragment StoreEntitySet="t_productos">
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

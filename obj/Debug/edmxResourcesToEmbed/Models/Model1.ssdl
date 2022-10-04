@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="examen_Jose_Antonio_Estrada_ReyesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t_clientes">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Domicilio" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="t_detalleFactura">
+    <Key>
+      <PropertyRef Name="idDetalle" />
+    </Key>
+    <Property Name="idDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idFactura" Type="int" />
+    <Property Name="idProducto" Type="int" />
+    <Property Name="Cantidad" Type="int" />
+  </EntityType>
+  <EntityType Name="t_facturas">
+    <Key>
+      <PropertyRef Name="idFactura" />
+    </Key>
+    <Property Name="idFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroFactura" Type="varchar" MaxLength="10" />
+    <Property Name="FechaHora" Type="datetime" />
+    <Property Name="idCliente" Type="int" />
+  </EntityType>
+  <EntityType Name="t_productos">
+    <Key>
+      <PropertyRef Name="idProducto" />
+    </Key>
+    <Property Name="idProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Marca" Type="varchar" MaxLength="50" />
+    <Property Name="Costo" Type="numeric" Precision="5" Scale="2" />
+    <Property Name="PrecioVenta" Type="numeric" Precision="5" Scale="2" />
+  </EntityType>
+  <Association Name="FK__t_detalle__idFac__2B3F6F97">
+    <End Role="t_facturas" Type="Self.t_facturas" Multiplicity="0..1" />
+    <End Role="t_detalleFactura" Type="Self.t_detalleFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_facturas">
+        <PropertyRef Name="idFactura" />
+      </Principal>
+      <Dependent Role="t_detalleFactura">
+        <PropertyRef Name="idFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__t_detalle__idPro__2C3393D0">
+    <End Role="t_productos" Type="Self.t_productos" Multiplicity="0..1" />
+    <End Role="t_detalleFactura" Type="Self.t_detalleFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_productos">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="t_detalleFactura">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__t_factura__idCli__267ABA7A">
+    <End Role="t_clientes" Type="Self.t_clientes" Multiplicity="0..1" />
+    <End Role="t_facturas" Type="Self.t_facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t_clientes">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="t_facturas">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="examen_Jose_Antonio_Estrada_ReyesModelStoreContainer">
+    <EntitySet Name="t_clientes" EntityType="Self.t_clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_detalleFactura" EntityType="Self.t_detalleFactura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_facturas" EntityType="Self.t_facturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t_productos" EntityType="Self.t_productos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__t_detalle__idFac__2B3F6F97" Association="Self.FK__t_detalle__idFac__2B3F6F97">
+      <End Role="t_facturas" EntitySet="t_facturas" />
+      <End Role="t_detalleFactura" EntitySet="t_detalleFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__t_detalle__idPro__2C3393D0" Association="Self.FK__t_detalle__idPro__2C3393D0">
+      <End Role="t_productos" EntitySet="t_productos" />
+      <End Role="t_detalleFactura" EntitySet="t_detalleFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__t_factura__idCli__267ABA7A" Association="Self.FK__t_factura__idCli__267ABA7A">
+      <End Role="t_clientes" EntitySet="t_clientes" />
+      <End Role="t_facturas" EntitySet="t_facturas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
